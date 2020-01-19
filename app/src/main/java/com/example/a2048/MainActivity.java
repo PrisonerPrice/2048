@@ -1,6 +1,10 @@
 package com.example.a2048;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.customview.widget.ExploreByTouchHelper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,10 +12,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
 import static com.example.a2048.Utils.customText;
 import static com.example.a2048.Utils.getScore;
@@ -35,54 +43,41 @@ public class MainActivity extends AppCompatActivity {
         final int[][] map = new int[4][4];
         initGame(map);
 
-        Button UP = (Button) findViewById(R.id.UP);
-        Button LEFT = (Button) findViewById(R.id.LEFT);
-        Button RIGHT = (Button) findViewById(R.id.RIGHT);
-        Button DOWN = (Button) findViewById(R.id.DOWN);
         Button RESET = (Button) findViewById(R.id.RESET);
+        View view = findViewById(R.id.view);
 
-        UP.setOnClickListener(new View.OnClickListener() {
+        view.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
-            public void onClick(View v) {
-                if(goingUp(map)){
-                    setView(map);
-                    pauseAndRefresh(map, 250);
+            public void onSwipeLeft() {
+                if (goingLeft(map)){
+                    setView(map);pauseAndRefresh(map, 250);
                 } else{
                     makeToast();
                 }
             }
-        });
 
-        LEFT.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(goingLeft(map)){
-                    setView(map);
-                    pauseAndRefresh(map, 250);
+            public void onSwipeRight() {
+                if (goingRight(map)){
+                    setView(map);pauseAndRefresh(map, 250);
                 } else{
                     makeToast();
                 }
             }
-        });
 
-        RIGHT.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(goingRight(map)){
-                    setView(map);
-                    pauseAndRefresh(map, 250);
+            public void onSwipeUp() {
+                if (goingUp(map)){
+                    setView(map);pauseAndRefresh(map, 250);
                 } else{
                     makeToast();
                 }
             }
-        });
 
-        DOWN.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if(goingDown(map)){
-                    setView(map);
-                    pauseAndRefresh(map, 250);
+            public void onSwipeDown() {
+                if (goingDown(map)){
+                    setView(map);pauseAndRefresh(map, 250);
                 } else{
                     makeToast();
                 }

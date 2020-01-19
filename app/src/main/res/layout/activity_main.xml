@@ -195,43 +195,11 @@
             />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/UP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="UP"
-        android:layout_marginBottom="24dp"
-        android:layout_gravity="center_horizontal"/>
-
-    <LinearLayout
-        android:orientation="horizontal"
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginHorizontal="48dp">
-        <Button
-            android:id="@+id/LEFT"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:text="LEFT" />
-        <Button
-            android:id="@+id/RIGHT"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content"
-            android:text="RIGHT" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/DOWN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DOWN"
-        android:layout_marginBottom="24dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_height="300dp"
+        android:background="@color/colorPrimaryDark"/>
 
     <Button
         android:id="@+id/RESET"
@@ -244,7 +212,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
         android:text="MAX SCORE:"
         android:textSize="24dp"
         />
